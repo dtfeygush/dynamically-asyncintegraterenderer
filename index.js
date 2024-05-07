@@ -1,11 +1,15 @@
-function binarySearch(arr, target) {
-  let low = 0;
-  let high = arr.length - 1;
-  while (low <= high) {
-    let mid = Math.floor((low + high) / 2);
-    if (arr[mid] === target) return mid;
-    if (arr[mid] < target) low = mid + 1;
-    else high = mid - 1;
+const selectionSortRecursive = (arr, start = 0) => {
+  if (start >= arr.length - 1) {
+    return arr;
   }
-  return -1;
-}
+  let minIndex = start;
+  for (let i = start + 1; i < arr.length; i++) {
+    if (arr[i] < arr[minIndex]) {
+      minIndex = i;
+    }
+  }
+  if (minIndex !== start) {
+    [arr[start], arr[minIndex]] = [arr[minIndex], arr[start]];
+  }
+  return selectionSortRecursive(arr, start + 1);
+};
