@@ -1,1 +1,3 @@
-const head = (arr) => arr[0];
+function getMax(arr) {
+  return Math.max(...arr);
+}
